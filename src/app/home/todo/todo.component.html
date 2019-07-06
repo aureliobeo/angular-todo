@@ -1,0 +1,51 @@
+<div class="app-container">
+  <div class="todo-container">
+    <mat-toolbar color="primary" class="todo-title">
+      Criador de tasks
+    </mat-toolbar>
+
+    <div class="todo-form">
+      <form (submit)="addTodo()">
+        <mat-form-field appearance="outline" class="todo-input">
+          <mat-label>
+            Nome da task
+          </mat-label>
+          <input matInput [(ngModel)]="todoName" name="todoName" />
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="todo-list">
+      <mat-card class="todo-item" *ngFor="let todo of todos">
+        <mat-checkbox [(ngModel)]="todo.finalizado" (change)="finalizar(todo)"></mat-checkbox>
+        <span *ngIf="!todo.editTodo" [ngClass]="{ finalizado: todo.finalizado }">{{ todo.nome }}</span>
+        <button mat-icon-button (click)="toggleTodo(todo)">
+          <mat-icon *ngIf="todo.favorito === true">
+            favorite
+          </mat-icon>
+          <mat-icon *ngIf="todo.favorito === false">
+            favorite_border
+          </mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteTodo(todo)">
+          <mat-icon>
+            delete
+          </mat-icon>
+        </button>
+        <button mat-icon-button (click)="editTodo(todo, inputDeEditar)">
+          <mat-icon *ngIf="!todo.editTodo">
+            edited
+          </mat-icon>
+        </button>
+        <form (submit)="editTodo(todo)">  
+          <input
+            #inputDeEditar
+            matInput
+            [hidden]="!todo.editTodo"
+            [(ngModel)]="todo.nome"
+            name="todoName"
+          />
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

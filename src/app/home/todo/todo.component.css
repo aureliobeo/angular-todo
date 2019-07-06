@@ -1,0 +1,43 @@
+.app-container {
+  height: 100%;
+  width: 100%;
+  background-color: #d2d2d2;
+  display: flex;
+  place-content: center;
+  align-items: center;
+}
+
+.app-container .todo-container {
+  min-width: 700px;
+  background-color: #ffffff;
+  height: 100%;
+}
+
+.app-container .todo-container .todo-title {
+  display: flex;
+  place-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.app-container .todo-container .todo-form {
+  width: 100%;
+  display: flex;
+  place-content: center;
+}
+.app-container .todo-container .todo-form .todo-input {
+  flex: 1;
+  padding: 0 16px;
+}
+
+.app-container .todo-container .todo-list {
+  padding: 0 16px;
+}
+
+.app-container .todo-container .todo-list .todo-item{
+  margin: 16px 0;
+}
+
+.finalizado{
+  text-decoration: line-through;
+}
